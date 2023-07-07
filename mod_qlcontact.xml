@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        type="module"
+        version="1.6"
+        client="site"
+        method="upgrade">
+    <name>mod_qlcontact</name>
+    <author>Mareike Riegel</author>
+    <creationDate>March 2013</creationDate>
+    <copyright>ql.de</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>mareike.riegel@ql.de</authorEmail>
+    <authorUrl>ql.de</authorUrl>
+    <version>1.6</version>
+    <description>MOD_QLCONTACT_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_qlcontact">mod_qlcontact.php</filename>
+        <folder>css</folder>
+        <folder>language</folder>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>mod_qlcontact.xml</filename>
+        <filename>license.txt</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.mod_qlcontact.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.mod_qlcontact.sys.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.mod_qlcontact.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.mod_qlcontact.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_QLCONTACT" />
+    <config>
+        <fields name="params">
+
+            <fieldset name="basic">
+                <field
+                        name="displaytype"
+                        type="list"
+                        default="1"
+                        label="MOD_QLCONTACT_DISPLAYTYPE_LABEL"
+                        description="MOD_QLCONTACT_DISPLAYTYPE_DESC">
+                    <option value="1">MOD_QLCONTACT_DISPLAYTYPE_CONTACT</option>
+                    <option value="2">MOD_QLCONTACT_DISPLAYTYPE_USER</option>
+                </field>
+                <field
+                        name="contact"
+                        type="sql"
+                        query="SELECT id, CONCAT(name,' ',id) AS name FROM `#__contact_details` WHERE published=1"
+                        label="MOD_QLCONTACT_CONTACT_LABEL"
+                        key_field="id"
+                        value_field="name"
+                        description="MOD_QLCONTACT_CONTACT_DESC">
+                    <option value="0">MOD_QLCONTACT_CONTACT_CURRENTCONTACT</option>
+                </field>
+                <field
+                        name="user"
+                        type="user"
+                        default="0"
+                        label="MOD_QLCONTACT_USER_LABEL"
+                        description="MOD_QLCONTACT_USER_DESC">
+                </field>
+            </fieldset>
+            <fieldset name="data">
+                <field
+                        name="showData"
+                        type="list"
+                        default="0"
+                        label="MOD_QLCONTACT_SHOWDATA_LABEL"
+                        description="MOD_QLCONTACT_SHOWDATA_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="data"
+                        type="list"
+                        default="0"
+                        multiple="true"
+                        size="10"
+                        label="MOD_QLCONTACT_DATA_LABEL"
+                        description="MOD_QLCONTACT_DATA_DESC">
+                    <option value="user_name">MOD_QLCONTACT_USER_NAME</option>
+                    <option value="user_username">MOD_QLCONTACT_USER_USERNAME</option>
+                    <option value="contact_image">MOD_QLCONTACT_CONTACT_IMAGE</option>
+                    <option value="contact_name">MOD_QLCONTACT_CONTACT_NAME</option>
+                    <option value="contact_con_position">MOD_QLCONTACT_CONTACT_CON_POSITION</option>
+                    <option value="contact_misc">MOD_QLCONTACT_CONTACT_MISC</option>
+                    <option value="contact_address">MOD_QLCONTACT_CONTACT_STREET</option>
+                    <option value="contact_postcode">MOD_QLCONTACT_CONTACT_POSTCODE</option>
+                    <option value="contact_suburb">MOD_QLCONTACT_CONTACT_SUBURB</option>
+                    <option value="contact_state">MOD_QLCONTACT_CONTACT_FEDSTATE</option>
+                    <option value="contact_country">MOD_QLCONTACT_CONTACT_COUNTRY</option>
+                    <option value="contact_telephone">MOD_QLCONTACT_CONTACT_TELEPHONE1</option>
+                    <option value="contact_mobile">MOD_QLCONTACT_CONTACT_TELEPHONE2</option>
+                    <option value="contact_fax">MOD_QLCONTACT_CONTACT_FAX</option>
+                    <option value="contact_email_to">MOD_QLCONTACT_CONTACT_EMAIL</option>
+                    <option value="contact_webpage">MOD_QLCONTACT_CONTACT_WEBPAGE</option>
+                    <option value="contact_sortname1">MOD_QLCONTACT_CONTACT_SORTNAME1</option>
+                    <option value="contact_sortname2">MOD_QLCONTACT_CONTACT_SORTNAME2</option>
+                    <option value="contact_sortname3">MOD_QLCONTACT_CONTACT_SORTNAME3</option>
+                    <option value="contact_params_linka">MOD_QLCONTACT_CONTACT_PARAMS_LINKA</option>
+                    <option value="contact_params_linkb">MOD_QLCONTACT_CONTACT_PARAMS_LINKB</option>
+                    <option value="contact_params_linkc">MOD_QLCONTACT_CONTACT_PARAMS_LINKC</option>
+                    <option value="contact_params_linkd">MOD_QLCONTACT_CONTACT_PARAMS_LINKD</option>
+                    <option value="contact_params_linke">MOD_QLCONTACT_CONTACT_PARAMS_LINKE</option>
+
+                </field>
+                <field
+                        name="link"
+                        type="list"
+                        default="0"
+                        label="MOD_QLCONTACT_LINK_LABEL"
+                        description="MOD_QLCONTACT_LINK_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="showlabels"
+                        type="list"
+                        default="0"
+                        label="MOD_QLCONTACT_SHOWLABELS_LABEL"
+                        description="MOD_QLCONTACT_SHOWLABELS_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="ordering"
+                        type="textarea"
+                        cols="30"
+                        rows="5"
+                        label="MOD_QLCONTACT_ORDERING_LABEL"
+                        description="MOD_QLCONTACT_ORDERING_DESC" />
+            </fieldset>
+            <fieldset name="text">
+
+                <field
+                        name="showText"
+                        type="list"
+                        default="0"
+                        label="MOD_QLCONTACT_SHOWTEXT_LABEL"
+                        description="MOD_QLCONTACT_SHOWTEXT_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="text"
+                        type="editor"
+                        filter="safehtml"
+                        width="350"
+                        label="MOD_QLCONTACT_TEXT_LABEL"
+                        description="MOD_QLCONTACT_TEXT_DESC" />
+            </fieldset>
+            <fieldset name="form">
+
+                <field
+                        name="showForm"
+                        type="list"
+                        default="0"
+                        label="MOD_QLCONTACT_SHOWFORM_LABEL"
+                        description="MOD_QLCONTACT_SHOWFORM_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="redirect"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMREDICT_LABEL"
+                        description="MOD_QLCONTACT_FORMREDICT_DESC" />
+                <field
+                        name="formheadline"
+                        default="Contact form"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMHEADLINE_LABEL"
+                        description="MOD_QLCONTACT_FORMHEADLINE_DESC" />
+                <field
+                        name="email_subject"
+                        default="Mail from Webssite"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMEMAILSUBJECT_LABEL"
+                        description="MOD_QLCONTACT_FORMEMAILSUBJECT_DESC" />
+                <field
+                        name="name"
+                        type="text"
+                        default="Name"
+                        label="MOD_QLCONTACT_FORMNAME_LABEL"
+                        description="MOD_QLCONTACT_FORMNAME_DESC" />
+                <field
+                        name="email"
+                        default="E-mail"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMEMAIL_LABEL"
+                        description="MOD_QLCONTACT_FORMEMAIL_DESC" />
+                <field
+                        name="subject"
+                        default="Subject"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMSUBJECT_LABEL"
+                        description="MOD_QLCONTACT_FORMSUBJECT_DESC" />
+                <field
+                        name="message"
+                        default="Message"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMMESSAGE_LABEL"
+                        description="MOD_QLCONTACT_FORMMESSAGE_DESC" />
+                <field
+                        name="submit"
+                        default="Submit"
+                        type="text"
+                        label="MOD_QLCONTACT_FORMSUBMIT_LABEL"
+                        description="MOD_QLCONTACT_FORMSUBMIT_DESC" />
+            </fieldset>
+            <fieldset name="link">
+                <field
+                        name="showLink"
+                        type="list"
+                        default="0"
+                        label="MOD_QLCONTACT_SHOWLINK_LABEL"
+                        description="MOD_QLCONTACT_SHOWLINK_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="linktext"
+                        default="To contact details"
+                        type="text"
+                        label="MOD_QLCONTACT_LINKTEXT_LABEL"
+                        description="MOD_QLCONTACT_LINKTEXT_DESC" />
+            </fieldset>
+
+            <fieldset
+                    name="advanced">
+
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+                <field
+                        name="moduleclass_sfx"
+                        type="text"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+                <field
+                        name="cache"
+                        type="list"
+                        default="1"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option
+                            value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option
+                            value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
