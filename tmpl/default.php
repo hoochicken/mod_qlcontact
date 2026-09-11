@@ -1,17 +1,25 @@
 <?php
 /**
- * @package        mod_qlcontact
- * @copyright    Copyright (C) 2023 ql.de All rights reserved.
- * @author        Mareike Riegel mareike.riegel@ql.de
- * @license        GNU General Public License version 2 or later; see LICENSE.txt
+ * @package     Hoochicken\Module\Qlcontact
+ *
+ * @copyright   Copyright (C) 2026 Mareike Riegel. All rights reserved.
+ * @license     GNU General Public License version 2 or later;
  */
 
-// no direct access
 defined('_JEXEC') or die;
-$document = JFactory::getDocument();
-$document->addStyleSheet(JURI::base() . 'modules/mod_qlcontact/css/styles.css');
 
-if (1 == $params->get('showData') && isset($data) && is_object($data) && 0 < (is_countable($data) ? count($data) : 0)) require(__DIR__ . '/default_data.php');
-if (1 == $params->get('showText')) require(__DIR__ . '/default_text.php');
-if (1 == $params->get('showForm')) require(__DIR__ . '/default_form.php');
-if (1 == $params->get('showLink') && false != $link) require(__DIR__ . '/default_link.php');
+use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
+
+/** @var ?ParametersCustom $displayData */
+?>
+asssssssssssssssssss
+<<?= $displayData->getModuleTag() ?> class="<?php echo 'mod_qlcontact ' . $displayData->getModuleClassSuffix(); ?>">
+    <?php if ($displayData->displayTitle()) : ?>
+        <<?= $displayData->getTitleTag() ?>>
+            <?= $displayData->getTitle() ?>
+        </<?= $displayData->getTitleTag() ?>>
+    <?php endif; ?>
+    <div class="module-content">
+        <?= $displayData->getMessage(); ?>
+    </div>
+</<?= $displayData->getModuleTag() ?>>
