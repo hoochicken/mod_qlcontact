@@ -1,58 +1,39 @@
 <?php
 /**
- * @package     Hoochicken\Module\Qlcontact
+ * @package                                     <mod_qlcontact>
  *
- * @copyright   Copyright (C) 2026 Mareike Riegel. All rights reserved.
- * @license     GNU General Public License version 2 or later;
+ * @author                                      <HoochickenCompany> | <Me> <email>
+ * @copyright                                   Copyright(R) year by  <HoochickenCompany> | <Me>
+ * @license                                     GNU General Public License version 2 or later; see LICENSE.txt
+ * @link                                        <mywebsite>
+ * @since                                       1.0.0
+ *
  */
 
 namespace Hoochicken\Module\Qlcontact\Site\Helper;
 
 defined('_JEXEC') or die;
 
-use Exception;
-use Joomla\CMS\Factory;
-use Joomla\Registry\Registry;
-use Joomla\Database\DatabaseInterface;
+use Joomla\CMS\Language\Text;
+
 
 class QlcontactHelper
 {
-    public function getMessage(Registry $params, $app): string
-    {
-        try {
-            // Get the Joomla database object
-            $db = Factory::getContainer()->get(DatabaseInterface::class);
+	/**
+	 * Method to get the items the helper calls the model to get the items
+	 *
+	 * @param   Registry  $params  The module parameters
+	 * @param   object $app     The application object
+	 *
+	 * @return  array
+	 *
+	 * @since   2.0
+	 */
+	public function getMessage($params, $app)
+	{
+		// Get the message from the $params
+		$message = $params->get('my-message', 'Fallback Message can be noted here');
 
-            // Example database query
-            /*
-            $query = $db->getQuery(true)
-                ->select($db->quoteName(['id', 'title', 'alias']))
-                ->from($db->quoteName('#__content'))
-                ->where($db->quoteName('state') . ' = 1')
-                ->order($db->quoteName('ordering') . ' ASC');
-            
-            $db->setQuery($query);
-            $items = $db->loadObjectList();
-            */
-
-            // Example: Get parameters
-            return (string) $params->get('message', '');
-
-            // Example: Load component parameters
-            /*
-            $componentParams = ComponentHelper::getParams('com_content');
-            $defaultLimit = $componentParams->get('default_limit', 10);
-            */
-
-            // Example: Process data
-            /*
-            foreach ($items as &$item) {
-                $item->link = Route::_('index.php?option=com_content&view=article&id=' . $item->id);
-                $item->introtext = HTMLHelper::_('content.prepare', $item->introtext);
-            }
-            */
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
+		return $message;
+	}
 }

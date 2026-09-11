@@ -1,25 +1,19 @@
 <?php
 /**
- * @package     Hoochicken\Module\Qlcontact
+ * @package                                     <mod_qlcontact>
  *
- * @copyright   Copyright (C) 2026 Mareike Riegel. All rights reserved.
- * @license     GNU General Public License version 2 or later;
+ * @author                                      <HoochickenCompany> | <Me> <email>
+ * @copyright                                   Copyright(R) year by  <HoochickenCompany> | <Me>
+ * @license                                     GNU General Public License version 2 or later; see LICENSE.txt
+ * @link                                        <mywebsite>
+ * @since                                       1.0.0
+ *
+ * @var     $module     \Joomla\CMS\Module\Module   The module object
+ * @var     $params     \Joomla\Registry\Registry   The module params
+ * @var     $mymsg     string                       The String that has been noted in the module settings and has been stored in the data array in our Dispatcher
+ *
  */
 
 defined('_JEXEC') or die;
 
-use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
-
-/** @var ?ParametersCustom $displayData */
-?>
-asssssssssssssssssss
-<<?= $displayData->getModuleTag() ?> class="<?php echo 'mod_qlcontact ' . $displayData->getModuleClassSuffix(); ?>">
-    <?php if ($displayData->displayTitle()) : ?>
-        <<?= $displayData->getTitleTag() ?>>
-            <?= $displayData->getTitle() ?>
-        </<?= $displayData->getTitleTag() ?>>
-    <?php endif; ?>
-    <div class="module-content">
-        <?= $displayData->getMessage(); ?>
-    </div>
-</<?= $displayData->getModuleTag() ?>>
+echo '<h1>' . $mymsg . '</h1>';

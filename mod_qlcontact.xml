@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" client="site" method="upgrade">
-    <name>MOD_QLCONTACT_TITLE</name>
-    <creationDate>2026-09-11</creationDate>
-    <author>Mareike Riegel</author>
-    <authorEmail>info@ql.de</authorEmail>
-    <authorUrl>https://ql.de</authorUrl>
-    <copyright>Copyright (C) 2026 Mareike Riegel. All rights reserved.</copyright>
-    <license>GNU General Public License version 2 or later;</license>
-    <version>1.0.0</version>
-    <description>MOD_QLCONTACT_XML_DESCRIPTION</description>
+<extension type="module" version="6" client="site" method="upgrade">
+    <name>MOD_QLCONTACT</name>
+    <creationDate>Today</creationDate>
+    <author>Me</author>
+    <authorEmail>email</authorEmail>
+    <authorUrl>web</authorUrl>
+    <copyright>(C) 2024 Open Source Matters, Inc.</copyright>
+    <license>GNU General Public License version 2 or later</license>
     <namespace path="src">Hoochicken\Module\Qlcontact</namespace>
-	<updateservers>
-		<server type="extension" priority="1" name="qlcontact - Updates">https://raw.githubusercontent.com/hoochicken/mod_qlcontact/main/_jupdate/mod_qlcontact.xml</server>
-	</updateservers>
+    <version>1.0.0</version>
+    <description><![CDATA[MOD_QLCONTACT_XML_DESCRIPTION]]></description>
+    <updateservers>
+        <server type="extension" priority="1" name="qlcontact - Updates">
+            https://raw.githubusercontent.com/hoochicken/mod_qlcontact/main/_jupdate/mod_qlcontact.xml
+        </server>
+    </updateservers>
     <files>
         <folder module="mod_qlcontact">services</folder>
         <folder>_jupdate</folder>
@@ -33,33 +35,9 @@
     </media>
     <config>
         <fields name="params">
-            <fieldset name="basic">
-                <field
-                        name="pretext"
-                        type="textarea"
-                        label="MOD_QLCONTACT_EXAMPLE_LABEL"
-                        filter="safehtml"
-                        cols="30"
-                        rows="5"
-                />
-            </fieldset>
-
-            <fieldset name="advanced">
-                <field
-                        name="layout"
-                        type="modulelayout"
-                        label="JFIELD_ALT_LAYOUT_LABEL"
-                        class="form-select"
-                        validate="moduleLayout"
-                />
-
-                <field
-                        name="moduleclass_sfx"
-                        type="textarea"
-                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-                        rows="3"
-                        validate="CssIdentifier"
-                />
+            <fieldset name="basic" addfieldprefix="Hoochicken\Module\Qlcontact\Site\Field">
+                <field name="my-message" type="text" label="MOD_QLCONTACT_FIELD_MY_MESSAGE_LABEL"
+                       description="MOD_QLCONTACT_FIELD_MY_MESSAGE_DESC"/>
             </fieldset>
         </fields>
     </config>
