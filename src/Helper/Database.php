@@ -71,11 +71,11 @@ class Database
                 'catid',
                 'name',
                 'con_position AS position',
+                'mobile',
                 'telephone',
                 'email_to AS email',
                 'misc',
                 'image',
-                'mobile',
             ])
             ->from('#__contact_details')
             ->where([
@@ -97,6 +97,7 @@ class Database
                 'catid',
                 'name',
                 'con_position AS position',
+                'mobile',
                 'telephone',
                 'email_to AS email',
                 'misc',
