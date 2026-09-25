@@ -21,16 +21,21 @@ if (empty($contact)) return;
     <div class="position">
         <?= $contact->getPosition() ?>
     </div>
-    <?php if ($contact->existsImage($BASE_PATH)) : ?>
+    <?php if ($contact->existsImage($BASE_PATH)): ?>
         <div class="image">
             <img src="<?= $contact->getImage() ?>" title="<?= $contact->getName() ?>" alt="<?= $contact->getName() ?>"/>
         </div>
     <?php endif; ?>
+    <?php if ($contact->hasEmail()): ?>
     <div class="email">
-        <?= $contact->getEmail() ?>
+        <a href="mailto:<?= $contact->getEmail() ?>"><?= $contact->getEmail() ?></a>
     </div>
+    <?php endif; ?>
     <div class="telephone">
-        <?= $contact->getTelephone() ?>
+        <a href="tel:<?= $contact->getTelephoneNormalized() ?>"><?= $contact->getTelephone() ?></a>
+    </div>
+    <div class="mobile">
+        <a href="tel:<?= $contact->getMobileNormalized() ?>"><?= $contact->getMobile() ?></a>
     </div>
     <div class="misc">
         <?= $contact->getMisc() ?>

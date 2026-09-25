@@ -70,6 +70,7 @@ class Database
                 'email_to AS email',
                 'misc',
                 'image',
+                'mobile',
             ])
             ->from('#__contact_details')
             ->where([
