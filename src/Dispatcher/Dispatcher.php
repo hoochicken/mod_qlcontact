@@ -14,12 +14,16 @@ namespace Hoochicken\Module\Qlcontact\Site\Dispatcher;
 
 defined('_JEXEC') or die;
 
+use Hoochicken\Module\Qlcontact\Site\Helper\Category;
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersBasic;
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
 use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
+use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\HelperFactoryAwareInterface;
 use Joomla\CMS\Helper\HelperFactoryAwareTrait;
 use Joomla\CMS\Uri\Uri;
+use Joomla\Database\DatabaseDriver;
+use Joomla\Database\DatabaseInterface;
 use Joomla\Registry\Registry;
 use Hoochicken\Module\Qlcontact\Site\Helper\QlcontactHelper;
 
@@ -27,20 +31,73 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 {
     use HelperFactoryAwareTrait;
 
+    private ?DatabaseDriver $database = null;
+
     protected function getLayoutData()
     {
+        $this->database = Factory::getContainer()->get(DatabaseInterface::class);
+
         $params = new Registry($this->module->params);
         $parametersBasic = new ParametersBasic($params, $this->module);
         $parametersCustom = new ParametersCustom($params, $this->module);
+
+        $categories = $parametersCustom->isDisplayTypeSubcategories()
+            ? $this->getSubcategories($parametersCustom->getParentCategory())
+            : [];
+        $category = $parametersCustom->isDisplayTypeCategory()
+            ? $this->getCategory($parametersCustom->getCategory())
+            : [];
 
         // var_dump($parametersBasic);
         // var_dump($parametersCustom);
         // Get the module Parameters
 
-        $data          = parent::getLayoutData();
-
+        $data = parent::getLayoutData();
         $data['parametersBasic'] = $parametersBasic;
         $data['parametersCustom'] = $parametersCustom;
+        $data['subcategories'] = $categories;
+        $data['category'] = $category;
         return $data;
+    }
+
+    /**
+     * @param int $category
+     * @return Category
+     */
+    private function getCategory(int $category): ?Category
+    {
+        $query = $this->database->getQuery(true);
+        $query
+            ->select(['id', 'title', 'description'])
+            ->from('#__categories')
+            ->where([
+                'id = ' . $category,
+                'published = 1'
+            ]);
+        $this->database->setQuery($query);
+        $data = $this->database->loadAssoc();
+        if (empty($data)) {
+            return null;
+        }
+        return Category::init($data);
+    }
+
+    /**
+     * @param int $category
+     * @return Category[]
+     */
+    private function getSubcategories(int $category): array
+    {
+        $query = $this->database->getQuery(true);
+        $query
+            ->select(['id', 'title', 'description'])
+            ->from('#__categories')
+            ->where([
+                'parent_id = ' . $category,
+                'published = 1'
+            ]);
+        $this->database->setQuery($query);
+        $data = $this->database->loadAssocList();
+        return array_map(fn($item) => Category::init($item), $data);
     }
 }

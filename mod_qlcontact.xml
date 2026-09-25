@@ -36,8 +36,69 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
+                <field name="display_type" type="list" label="MOD_QLCONTACT_DISPLAY_LABEL"
+                       description="MOD_QLCONTACT_DISPLAY_DESC" required="true">
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE</option>
+                    <option value="single">MOD_QLCONTACT_DISPLAY_SINGLE_CONTACT</option>
+                    <option value="category">MOD_QLCONTACT_DISPLAY_CATEGORY</option>
+                    <option value="subcategories">MOD_QLCONTACT_DISPLAY_SUBCATEGORIES</option>
+                </field>
+            </fieldset>
+            <fieldset name="single">
+                <field
+                        name="single"
+                        type="sql"
+                        default="10"
+                        label="MOD_QLCONTACT_CONTCAT_TITLE"
+                        query="SELECT c.id, CONCAT(c.name , ' (id:', c.id , '; ' , cat.title, ')') as title FROM `#__contact_details` c LEFT JOIN #__categories cat ON cat.id = c.catid WHERE c.published AND cat.published = 1"
+                        key_field="id"
+                        value_field="title"
+                />
                 <field name="message" type="text" label="MOD_QLCONTACT_FIELD_MY_MESSAGE_LABEL"
                        description="MOD_QLCONTACT_FIELD_MY_MESSAGE_DESC"/>
+            </fieldset>
+            <fieldset name="category">
+                <field name="category" type="category" extension="com_contact" label="Select a category" description="" />
+            </fieldset>
+            <fieldset name="subcategories">
+                <field name="parentCategory" type="category" extension="com_contact" label="Select a category" description="" />
+            </fieldset>
+            <fieldset name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        class="form-select"
+                        validate="moduleLayout"
+                />
+
+                <field
+                        name="moduleclass_sfx"
+                        type="textarea"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        rows="3"
+                        validate="CssIdentifier"
+                />
+
+                <field
+                        name="cache"
+                        type="list"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        default="1"
+                        filter="integer"
+                        validate="options"
+                >
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+
+                <field
+                        name="cache_time"
+                        type="number"
+                        label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                        default="900"
+                        filter="integer"
+                />
             </fieldset>
         </fields>
     </config>

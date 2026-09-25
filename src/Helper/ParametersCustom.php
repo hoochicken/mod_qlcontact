@@ -25,4 +25,29 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
     {
         return (string)$this->params->get('message', 'default message');
     }
+
+    public function isDisplayTypeSubcategories(): bool
+    {
+        return 'subcategories' === $this->getDisplayType();
+    }
+
+    public function isDisplayTypeCategory(): bool
+    {
+        return 'category' === $this->getDisplayType();
+    }
+
+    public function getCategory(): int
+    {
+        return (int)$this->params->get('category', 0);
+    }
+
+    public function getParentCategory(): int
+    {
+        return (int)$this->params->get('parentCategory', 0);
+    }
+
+    private function getDisplayType(): string
+    {
+        return (string)$this->params->get('display_type', 'category');
+    }
 }

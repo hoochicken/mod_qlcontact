@@ -1,4 +1,5 @@
 <?php
+
 /**
  * mod_qlcontact
  *
@@ -14,12 +15,10 @@
 
 defined('_JEXEC') or die;
 
-echo '<h1>' . $parametersCustom->getMessage() . '</h1>';
-
-
-if ($parametersCustom->isDisplayTypeSubcategories()) {
-    require __DIR__ . '/subcategories.php';
+if (empty($subcategories)) {
+    return;
 }
-if ($parametersCustom->isDisplayTypeCategory()) {
+
+foreach($subcategories as $category) {
     require __DIR__ . '/category.php';
 }
