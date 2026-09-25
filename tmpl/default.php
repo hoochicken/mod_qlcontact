@@ -1,17 +1,42 @@
 <?php
 /**
- * @package        mod_qlcontact
- * @copyright    Copyright (C) 2023 ql.de All rights reserved.
- * @author        Mareike Riegel mareike.riegel@ql.de
- * @license        GNU General Public License version 2 or later; see LICENSE.txt
+ * mod_qlcontact
+ *
+ * @copyright  Copyright (C) 2026. All rights reserved.
+ * @license    GNU General Public License version 2 or later;
+ * @var     $module     Module   The module object
+ * @var     $params     Registry   The module params
+ * @var     $contact     Contact
+ * @var     $category     Category
+ * @var     $subcategories    Category[]
+ * @var     $parametersBasic     ParametersBasic                       The String that has been noted in the module settings and has been stored in the data array in our Dispatcher
+ * @var     $parametersCustom    ParametersCustom                       The String that has been noted in the module settings and has been stored in the data array in our Dispatcher
  */
 
-// no direct access
-defined('_JEXEC') or die;
-$document = JFactory::getDocument();
-$document->addStyleSheet(JURI::base() . 'modules/mod_qlcontact/css/styles.css');
+use Hoochicken\Module\Qlcontact\Site\Helper\Category;
+use Hoochicken\Module\Qlcontact\Site\Helper\Contact;
+use Hoochicken\Module\Qlcontact\Site\Helper\ParametersBasic;
+use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
+use Joomla\CMS\Extension\Module;
+use Joomla\CMS\Factory;
+use Joomla\Registry\Registry;
 
-if (1 == $params->get('showData') && isset($data) && is_object($data) && 0 < (is_countable($data) ? count($data) : 0)) require(__DIR__ . '/default_data.php');
-if (1 == $params->get('showText')) require(__DIR__ . '/default_text.php');
-if (1 == $params->get('showForm')) require(__DIR__ . '/default_form.php');
-if (1 == $params->get('showLink') && false != $link) require(__DIR__ . '/default_link.php');
+defined('_JEXEC') or die;
+
+Factory::getApplication()->getDocument()->getWebAssetManager()->registerAndUseStyle('module.qlcontact.styles', 'media/mod_qlcontact/css/styles.css');
+?>
+
+<div class="qlcontact">
+<h1><?= $parametersCustom->getMessage() ?></h1>
+
+<div class="content">
+<?php
+if ($parametersCustom->isDisplayTypeSubcategories()) {
+    require __DIR__ . '/subcategories.php';
+} elseif ($parametersCustom->isDisplayTypeCategory()) {
+    require __DIR__ . '/category.php';
+} elseif ($parametersCustom->isDisplayTypeContact()) {
+    require __DIR__ . '/contact.php';
+}
+?>
+</div>
