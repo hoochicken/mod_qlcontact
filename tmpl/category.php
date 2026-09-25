@@ -17,7 +17,7 @@ if (empty($category)) return;
 ?>
 
 <div class="category">
-    <h3><?= $category->getTitle() ?> (<?= $category->getId() ?>)</h3>
+    <h3><?= $category->getTitle() ?> <?php if ($parametersCustom->isDebug()): ?>(<?= $category->getId() ?>)<?php endif; ?></h3>
     <div class="description">
         <?= $category->getDescription() ?>
     </div>

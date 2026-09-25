@@ -66,6 +66,9 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 
         if ($parametersBasic->isDebug()) {
             print_r($this->database->getSqls());
+            print_r($contact);
+            print_r($category);
+            print_r($categories);
         }
 
         // build display data
