@@ -31,9 +31,7 @@ interface ParametersBasicInterface
 
     public function setModule(?stdClass $module): void;
 
-    public function getMessage(): ?string;
-
-    public function setMessage(?string $message): void;
+    public function isDebug(): bool;
 
     public function existsErrors(): bool;
 

@@ -17,6 +17,7 @@ defined('_JEXEC') or die;
 use Hoochicken\Module\Qlcontact\Site\Helper\Category;
 use Hoochicken\Module\Qlcontact\Site\Helper\Contact;
 use Hoochicken\Module\Qlcontact\Site\Helper\Database;
+use Hoochicken\Module\Qlcontact\Site\Helper\MessageCollection;
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersBasic;
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
 use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
@@ -35,7 +36,7 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 
     protected function getLayoutData()
     {
-        $this->database = new Database(Factory::getContainer()->get(DatabaseInterface::class));
+        $this->database = new Database(Factory::getContainer()->get(DatabaseInterface::class), new MessageCollection());
 
         $params = new Registry($this->module->params);
         $parametersBasic = new ParametersBasic($params, $this->module);
@@ -62,6 +63,10 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
         $contact = $parametersCustom->isDisplayTypeContact()
             ? $this->database->getContactById($parametersCustom->getContact())
             : null;
+
+        if ($parametersBasic->isDebug()) {
+            print_r($this->database->getSqls());
+        }
 
         // build display data
         $data = parent::getLayoutData();

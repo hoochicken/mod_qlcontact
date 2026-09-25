@@ -17,7 +17,7 @@ class ParametersBasic implements ParametersBasicInterface
 {
     protected ?Registry $params = null;
     protected ?stdClass $module = null;
-    protected ?string $message = null;
+    protected bool $debug = false;
     protected ?MessageCollection $errors = null;
 
     public function __construct(Registry $params, stdClass $module)
@@ -62,7 +62,7 @@ class ParametersBasic implements ParametersBasicInterface
 
     public function existsErrors(): bool
     {
-        return !is_null($this->errors) && $this->errors->hasErrors();
+        return !is_null($this->errors) && $this->errors->hasItems();
     }
 
     public function getParams(): ?Registry
@@ -85,19 +85,9 @@ class ParametersBasic implements ParametersBasicInterface
         $this->module = $module;
     }
 
-    public function existsMessage(): bool
+    public function isDebug(): bool
     {
-        return !empty(trim(strip_tags($this->message ?? '')));
-    }
-
-    public function getMessage(): ?string
-    {
-        return $this->message;
-    }
-
-    public function setMessage(?string $message): void
-    {
-        $this->message = $message;
+        return (bool) $this->params->get('debug', false);
     }
 
     public function getErrors(): ?MessageCollection
