@@ -127,8 +127,8 @@ class Database
         return $categories;
     }
 
-    public function getSqls(): MessageCollection
+    public function getSqls(): array
     {
-        return $this->sqls;
+        return $this->sqls->get();
     }
 }
