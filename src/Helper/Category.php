@@ -61,4 +61,9 @@ class Category
     {
         $this->contacts = $contacts;
     }
+
+    public function setContact(Contact $contact): void
+    {
+        $this->contacts[] = $contact;
+    }
 }

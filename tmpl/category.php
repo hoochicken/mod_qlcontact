@@ -17,8 +17,13 @@ if (empty($category)) return;
 ?>
 
 <div class="category">
-    <h2><?= $category->getTitle() ?> (<?= $category->getId() ?>)</h2>
+    <h3><?= $category->getTitle() ?> (<?= $category->getId() ?>)</h3>
     <div class="description">
         <?= $category->getDescription() ?>
+    </div>
+    <div class="categories">
+        <?php foreach ($category->getContacts() as $contact) : ?>
+            <?php require __DIR__ . '/contact.php'; ?>
+        <?php endforeach; ?>
     </div>
 </div>

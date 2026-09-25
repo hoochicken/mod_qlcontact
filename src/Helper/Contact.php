@@ -9,46 +9,33 @@ class Contact
     private string $email;
     private string $telephone;
     private string $position;
-    private string $description;
+    private string $misc;
+    private int $catId;
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id): void
+    public function __construct($id, string $name, string $email, string $telephone, string $position, string $misc, int $catId)
     {
         $this->id = $id;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
         $this->name = $name;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): void
-    {
         $this->email = $email;
-    }
-
-    public function getTelephone(): string
-    {
-        return $this->telephone;
-    }
-
-    public function setTelephone(string $telephone): void
-    {
         $this->telephone = $telephone;
+        $this->position = $position;
+        $this->misc = $misc;
+        $this->catId = $catId;
+    }
+
+    public static function init(array $data): self
+    {
+        return new self((int)$data['id'], $data['name'], $data['email'], $data['telephone'], $data['position'], $data['misc'], (int)$data['catid']);
+    }
+
+    public function getMisc(): string
+    {
+        return $this->misc;
+    }
+
+    public function setMisc(string $misc): void
+    {
+        $this->misc = $misc;
     }
 
     public function getPosition(): string
@@ -61,13 +48,53 @@ class Contact
         $this->position = $position;
     }
 
-    public function getDescription(): string
+    public function getTelephone(): string
     {
-        return $this->description;
+        return $this->telephone;
     }
 
-    public function setDescription(string $description): void
+    public function setTelephone(string $telephone): void
     {
-        $this->description = $description;
+        $this->telephone = $telephone;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getCatId(): int
+    {
+        return $this->catId;
+    }
+
+    public function setCatId(string $catId): void
+    {
+        $this->catId = $catId;
     }
 }
