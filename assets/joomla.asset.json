@@ -9,9 +9,6 @@
       "name": "mod_qlcontact.script",
       "type": "script",
       "uri": "mod_qlcontact/script.js",
-      "dependencies": [
-        "core"
-      ],
       "attributes": {
         "type": "module"
       },

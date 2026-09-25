@@ -61,11 +61,6 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
         return (string)$this->params->get('display_type', 'category');
     }
 
-    public function isDisplayCategories(): bool
-    {
-        return $this->isSubcategoriesAndDisplayContacts() || $this->isCategoryAndDisplayContacts();
-    }
-
     public function isSubcategoriesAndDisplayContacts(): bool
     {
         return $this->isDisplayTypeSubcategories() && $this->params->get('subcategories_display_contacts', false);
