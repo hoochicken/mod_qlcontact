@@ -34,7 +34,7 @@ class MessageCollection
         return $this->items;
     }
 
-    public function hasErrors(): bool
+    public function hasItems(): bool
     {
         return 0 < count($this->items);
     }

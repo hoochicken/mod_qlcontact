@@ -13,6 +13,12 @@ class MessageItem
     private string $type;
     private string $message;
 
+    public function __construct(string $message, string $type = 'info')
+    {
+        $this->type = $type;
+        $this->message = $message;
+    }
+
     public function getType(): string
     {
         return $this->type;

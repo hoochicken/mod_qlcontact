@@ -31,7 +31,7 @@
         <language tag="en-GB">language/en-GB/mod_qlcontact.sys.ini</language>
     </languages>
     <media destination="mod_qlcontact" folder="media">
-        <filename>joomla.asset.json</filename>
+        <filename>assets/joomla.asset.json</filename>
         <filename>assets/css/mod_qlcontact.css</filename>
         <filename>assets/js/mod_qlcontact.js</filename>
     </media>
@@ -45,6 +45,12 @@
                     <option value="category">MOD_QLCONTACT_DISPLAY_CATEGORY</option>
                     <option value="subcategories">MOD_QLCONTACT_DISPLAY_SUBCATEGORIES</option>
                 </field>
+                <field
+                        name="debug" type="radio" class="btn-group" default="0"
+                        label="debug">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
             </fieldset>
             <fieldset name="single">
                 <field
@@ -55,12 +61,12 @@
                         query="SELECT c.id, CONCAT(c.name , ' (id:', c.id , '; ' , cat.title, ')') as title FROM `#__contact_details` c LEFT JOIN #__categories cat ON cat.id = c.catid WHERE c.published AND cat.published = 1"
                         key_field="id"
                         value_field="title">
-                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE_LABEL</option>
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE</option>
                 </field>
             </fieldset>
             <fieldset name="category">
                 <field name="category" type="category" extension="com_contact" label="MOD_QLCONTACT_CATEGORY_LABEL" description="MOD_QLCONTACT_CATEGORY_DESC">
-                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE_LABEL</option>
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE</option>
                 </field>
                 <field
                         name="category_display_contacts" type="radio" class="btn-group" default="0"
@@ -71,7 +77,7 @@
             </fieldset>
             <fieldset name="subcategories">
                 <field name="parentCategory" type="category" extension="com_contact" label="MOD_QLCONTACT_PARENTCATEGORY_LABEL" description="MOD_QLCONTACT_PARENTCATEGORY_DESC">
-                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE_LABEL</option>
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE</option>
                 </field>
                 <field
                         name="subcategories_display_contacts" type="radio" class="btn-group" default="0"

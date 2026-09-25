@@ -6,11 +6,14 @@ use Joomla\Database\DatabaseDriver;
 
 class Database
 {
-    private ?DatabaseDriver $db = null;
+    private DatabaseDriver $db;
 
-    public function __construct($db)
+    private MessageCollection $sqls;
+
+    public function __construct(DatabaseDriver $db, MessageCollection $sqls)
     {
         $this->db = $db;
+        $this->sqls = $sqls;
     }
 
     public function getCategoryById(int $categoryId): ?Category
@@ -24,6 +27,7 @@ class Database
                 'published = 1'
             ]);
         $this->db->setQuery($query);
+        $this->sqls->add(new MessageItem((string)$query));
         $data = $this->db->loadAssoc();
         if (empty($data)) {
             return null;
@@ -46,6 +50,7 @@ class Database
                 'published = 1'
             ]);
         $this->db->setQuery($query);
+        $this->sqls->add(new MessageItem((string)$query));
         $data = $this->db->loadAssocList();
         return array_map(fn($item) => Category::init($item), $data);
     }
@@ -78,6 +83,7 @@ class Database
                 'published = 1'
             ]);
         $this->db->setQuery($query);
+        $this->sqls->add(new MessageItem((string)$query));
         $data = $this->db->loadAssocList();
         return array_map(fn($item) => Contact::init($item), $data);
     }
@@ -102,6 +108,7 @@ class Database
                 'published = 1'
             ]);
         $this->db->setQuery($query);
+        $this->sqls->add(new MessageItem((string)$query));
         $data = $this->db->loadAssoc();
         return empty($data) ? null : Contact::init($data);
     }
@@ -118,5 +125,10 @@ class Database
             $category->setContacts($contactsOfCat);
         }
         return $categories;
+    }
+
+    public function getSqls(): MessageCollection
+    {
+        return $this->sqls;
     }
 }
