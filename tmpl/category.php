@@ -6,6 +6,7 @@
  * @copyright  Copyright (C) 2026. All rights reserved.
  * @license    GNU General Public License version 2 or later;
  * @var     $category     ?Category
+ * @var     $parametersCustom     \Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom
  *
  */
 
@@ -21,9 +22,11 @@ if (empty($category)) return;
     <div class="description">
         <?= $category->getDescription() ?>
     </div>
+    <?php if ($parametersCustom->isDisplayCategories()): ?>
     <div class="categories">
         <?php foreach ($category->getContacts() as $contact) : ?>
             <?php require __DIR__ . '/contact.php'; ?>
         <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 </div>

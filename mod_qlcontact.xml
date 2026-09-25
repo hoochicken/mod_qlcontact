@@ -59,9 +59,21 @@
             </fieldset>
             <fieldset name="category">
                 <field name="category" type="category" extension="com_contact" label="Select a category" description="" />
+                <field
+                        name="category_display_contacts" type="radio" class="btn-group" default="0"
+                        label="MOD_QLCONTACT_DISPLAY_CONTACTS">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
             </fieldset>
             <fieldset name="subcategories">
                 <field name="parentCategory" type="category" extension="com_contact" label="Select a category" description="" />
+                <field
+                        name="subcategories_display_contacts" type="radio" class="btn-group" default="0"
+                        label="MOD_QLCONTACT_DISPLAY_CONTACTS">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
             </fieldset>
             <fieldset name="advanced">
                 <field

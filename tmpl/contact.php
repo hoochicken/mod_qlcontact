@@ -21,13 +21,18 @@ if (empty($contact)) return;
     <div class="position">
         <?= $contact->getPosition() ?>
     </div>
+    <?php if ($contact->existsImage()) : ?>
+        <div class="image">
+            <?= $contact->getImage() ?>
+        </div>
+    <?php endif; ?>
     <div class="email">
         <?= $contact->getEmail() ?>
     </div>
     <div class="telephone">
         <?= $contact->getTelephone() ?>
     </div>
-    <div class="misv">
+    <div class="misc">
         <?= $contact->getMisc() ?>
     </div>
 </div>

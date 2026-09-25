@@ -124,6 +124,7 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
                 'telephone',
                 'email_to AS email',
                 'misc',
+                'image',
             ])
             ->from('#__contact_details')
             ->where([
