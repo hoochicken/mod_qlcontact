@@ -14,6 +14,8 @@ namespace Hoochicken\Module\Qlcontact\Site\Dispatcher;
 
 defined('_JEXEC') or die;
 
+use Hoochicken\Module\Qlcontact\Site\Helper\ParametersBasic;
+use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
 use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
 use Joomla\CMS\Helper\HelperFactoryAwareInterface;
 use Joomla\CMS\Helper\HelperFactoryAwareTrait;
@@ -27,12 +29,18 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 
     protected function getLayoutData()
     {
-    // Get the module Parameters
         $params = new Registry($this->module->params);
+        $parametersBasic = new ParametersBasic($params, $this->module);
+        $parametersCustom = new ParametersCustom($params, $this->module);
+
+        // var_dump($parametersBasic);
+        // var_dump($parametersCustom);
+        // Get the module Parameters
+
         $data          = parent::getLayoutData();
 
-        $helperName    = 'QlcontactHelper';
-        $data['mymsg'] = $this->getHelperFactory()->getHelper($helperName)->getMessage($data['params'], $this->getApplication());
+        $data['parametersBasic'] = $parametersBasic;
+        $data['parametersCustom'] = $parametersCustom;
         return $data;
     }
 }

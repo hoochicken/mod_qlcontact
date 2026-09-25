@@ -5,7 +5,7 @@
     <author>Me</author>
     <authorEmail>email</authorEmail>
     <authorUrl>web</authorUrl>
-    <copyright>(C) 2024 Open Source Matters, Inc.</copyright>
+    <copyright>(C) 2026 Open Source Matters, Inc.</copyright>
     <license>GNU General Public License version 2 or later</license>
     <namespace path="src">Hoochicken\Module\Qlcontact</namespace>
     <version>1.0.0</version>
@@ -35,8 +35,8 @@
     </media>
     <config>
         <fields name="params">
-            <fieldset name="basic" addfieldprefix="Hoochicken\Module\Qlcontact\Site\Field">
-                <field name="my-message" type="text" label="MOD_QLCONTACT_FIELD_MY_MESSAGE_LABEL"
+            <fieldset name="basic">
+                <field name="message" type="text" label="MOD_QLCONTACT_FIELD_MY_MESSAGE_LABEL"
                        description="MOD_QLCONTACT_FIELD_MY_MESSAGE_DESC"/>
             </fieldset>
         </fields>

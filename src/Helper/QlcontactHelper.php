@@ -15,6 +15,7 @@ namespace Hoochicken\Module\Qlcontact\Site\Helper;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
+use Joomla\Registry\Registry;
 
 
 class QlcontactHelper
@@ -32,7 +33,7 @@ class QlcontactHelper
 	public function getMessage($params, $app)
 	{
 		// Get the message from the $params
-		$message = $params->get('my-message', 'Fallback Message can be noted here');
+		$message = $params->get('message', 'XXFallback Message can be noted here');
 
 		return $message;
 	}

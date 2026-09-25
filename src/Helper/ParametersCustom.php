@@ -20,4 +20,9 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
     {
         parent::__construct($params, $module);
     }
+
+    public function getMessage(): string
+    {
+        return (string)$this->params->get('message', 'default message');
+    }
 }

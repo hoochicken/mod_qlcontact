@@ -10,4 +10,5 @@ namespace Hoochicken\Module\Qlcontact\Site\Helper;
 
 interface ParametersCustomInterface
 {
+    public function getMessage(): string;
 }
