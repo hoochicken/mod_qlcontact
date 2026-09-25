@@ -38,12 +38,17 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
 
     public function isDisplayTypeContact(): bool
     {
-        return 'contact' === $this->getDisplayType();
+        return 'single' === $this->getDisplayType();
     }
 
     public function getCategory(): int
     {
         return (int)$this->params->get('category', 0);
+    }
+
+    public function getContact(): int
+    {
+        return (int)$this->params->get('single', 0);
     }
 
     public function getParentCategory(): int

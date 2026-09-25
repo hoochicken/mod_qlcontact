@@ -18,16 +18,25 @@ use Hoochicken\Module\Qlcontact\Site\Helper\Contact;
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersBasic;
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
 use Joomla\CMS\Extension\Module;
+use Joomla\CMS\Factory;
 use Joomla\Registry\Registry;
 
 defined('_JEXEC') or die;
 
-echo '<h1>' . $parametersCustom->getMessage() . '</h1>';
+Factory::getApplication()->getDocument()->getWebAssetManager()->registerAndUseStyle('module.qlcontact.styles', 'media/mod_qlcontact/css/styles.css');
+?>
 
+<div class="qlcontact">
+<h1><?= $parametersCustom->getMessage() ?></h1>
+
+<div class="content">
+<?php
 if ($parametersCustom->isDisplayTypeSubcategories()) {
     require __DIR__ . '/subcategories.php';
 } elseif ($parametersCustom->isDisplayTypeCategory()) {
     require __DIR__ . '/category.php';
-} elseif ($parametersCustom->isDisplayTypeCategory()) {
+} elseif ($parametersCustom->isDisplayTypeContact()) {
     require __DIR__ . '/contact.php';
 }
+?>
+</div>

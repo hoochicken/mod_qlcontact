@@ -57,6 +57,11 @@ class Category
         return $this->contacts;
     }
 
+    public function hasContacts(): bool
+    {
+        return count($this->contacts) > 0;
+    }
+
     public function setContacts(array $contacts): void
     {
         $this->contacts = $contacts;

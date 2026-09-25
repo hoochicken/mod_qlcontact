@@ -22,7 +22,7 @@ class Contact
         $this->position = $position;
         $this->misc = $misc;
         $this->catId = $catId;
-        $this->image = $image;
+        $this->setImage($image);
     }
 
     public static function init(array $data): self
@@ -105,13 +105,15 @@ class Contact
         return $this->image;
     }
 
-    public function existsImage(): bool
+    public function existsImage(string $basePath = ''): bool
     {
-        return file_exists(JPATH_BASE . '/' . $this->image);
+        $imagePath = $basePath . '/' . $this->image;
+        return file_exists($imagePath) && is_file($imagePath);
     }
 
     public function setImage(string $image): void
     {
-        $this->image = $image;
+        $parts = explode('#', trim($image));
+        $this->image = $parts[0] ?? $image;
     }
 }

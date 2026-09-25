@@ -18,7 +18,12 @@ defined('_JEXEC') or die;
 if (empty($subcategories)) {
     return;
 }
+?>
 
+<div class="categories">
+<?php
 foreach($subcategories as $category) {
     require __DIR__ . '/category.php';
 }
+?>
+</div>

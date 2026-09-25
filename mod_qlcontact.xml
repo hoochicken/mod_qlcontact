@@ -2,10 +2,11 @@
 <extension type="module" version="6" client="site" method="upgrade">
     <name>MOD_QLCONTACT</name>
     <creationDate>Today</creationDate>
-    <author>Me</author>
-    <authorEmail>email</authorEmail>
+    <author>Hoochicken</author>
+    <authorEmail>info@ql.de</authorEmail>
     <authorUrl>web</authorUrl>
-    <copyright>(C) 2026 Open Source Matters, Inc.</copyright>
+    <copyright>(C) 2026 ql.de</copyright>
+    <copyright>(C) 2026 ql.de</copyright>
     <license>GNU General Public License version 2 or later</license>
     <namespace path="src">Hoochicken\Module\Qlcontact</namespace>
     <version>1.0.0</version>
@@ -18,6 +19,7 @@
     <files>
         <folder module="mod_qlcontact">services</folder>
         <folder>_jupdate</folder>
+        <folder>assets</folder>
         <folder>language</folder>
         <folder>services</folder>
         <folder>src</folder>
@@ -30,8 +32,8 @@
     </languages>
     <media destination="mod_qlcontact" folder="media">
         <filename>joomla.asset.json</filename>
-        <filename>css/mod_qlcontact.css</filename>
-        <filename>js/mod_qlcontact.js</filename>
+        <filename>assets/css/mod_qlcontact.css</filename>
+        <filename>assets/js/mod_qlcontact.js</filename>
     </media>
     <config>
         <fields name="params">
@@ -49,16 +51,17 @@
                         name="single"
                         type="sql"
                         default="10"
-                        label="MOD_QLCONTACT_CONTCAT_TITLE"
+                        label="MOD_QLCONTACT_CONTACT_LABEL"
                         query="SELECT c.id, CONCAT(c.name , ' (id:', c.id , '; ' , cat.title, ')') as title FROM `#__contact_details` c LEFT JOIN #__categories cat ON cat.id = c.catid WHERE c.published AND cat.published = 1"
                         key_field="id"
-                        value_field="title"
-                />
-                <field name="message" type="text" label="MOD_QLCONTACT_FIELD_MY_MESSAGE_LABEL"
-                       description="MOD_QLCONTACT_FIELD_MY_MESSAGE_DESC"/>
+                        value_field="title">
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE_LABEL</option>
+                </field>
             </fieldset>
             <fieldset name="category">
-                <field name="category" type="category" extension="com_contact" label="Select a category" description="" />
+                <field name="category" type="category" extension="com_contact" label="MOD_QLCONTACT_CATEGORY_LABEL" description="MOD_QLCONTACT_CATEGORY_DESC">
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE_LABEL</option>
+                </field>
                 <field
                         name="category_display_contacts" type="radio" class="btn-group" default="0"
                         label="MOD_QLCONTACT_DISPLAY_CONTACTS">
@@ -67,7 +70,9 @@
                 </field>
             </fieldset>
             <fieldset name="subcategories">
-                <field name="parentCategory" type="category" extension="com_contact" label="Select a category" description="" />
+                <field name="parentCategory" type="category" extension="com_contact" label="MOD_QLCONTACT_PARENTCATEGORY_LABEL" description="MOD_QLCONTACT_PARENTCATEGORY_DESC">
+                    <option value="">MOD_QLCONTACT_PLEASE_CHOOSE_LABEL</option>
+                </field>
                 <field
                         name="subcategories_display_contacts" type="radio" class="btn-group" default="0"
                         label="MOD_QLCONTACT_DISPLAY_CONTACTS">
