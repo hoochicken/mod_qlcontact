@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
 if (empty($contact)) return;
 ?>
 
-<div class="contact-card <?= $parametersCustom->getContactItemClass('col-md-4') ?>">
+<div class="qlcontact contact-card <?= $parametersCustom->getContactItemClass('col-md-4') ?>">
     <h2><?= $contact->getName() ?> <?php if ($parametersBasic->isDebug()): ?>(<?= $contact->getId() ?>)<?php endif; ?></h2>
 
     <div class="position">

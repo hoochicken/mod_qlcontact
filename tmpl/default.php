@@ -25,7 +25,7 @@ defined('_JEXEC') or die;
 
 Factory::getApplication()->getDocument()->getWebAssetManager()->registerAndUseStyle('module.qlcontact.styles', 'media/mod_qlcontact/css/styles.css');
 ?>
-<div class="content">
+<div class="qlcontact content">
 <?php
 if ($parametersCustom->isDisplayTypeSubcategories()) {
     require __DIR__ . '/subcategories.php';

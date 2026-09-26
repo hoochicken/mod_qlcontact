@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
 if (empty($category)) return;
 ?>
 
-<div class="category <?= $parametersCustom->getCategoryItemClass('col-md-12') ?>">
+<div class="qlcontact category <?= $parametersCustom->getCategoryItemClass('col-md-12') ?>">
     <?php if ($parametersCustom->isSubcategoriesAndDisplayTitle() || $parametersCustom->isCategoryAndDisplayTitle()) : ?>
         <h3><?= $category->getTitle() ?> <?php if ($parametersCustom->isDebug()): ?>(<?= $category->getId() ?>)<?php endif; ?></h3>
         <div class="description">
