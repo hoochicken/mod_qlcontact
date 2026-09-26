@@ -51,6 +51,8 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
+                <field name="contact_item_class" default="col-md-4" />
+                <field name="category_item_class" default="col-md-12" />
             </fieldset>
             <fieldset name="single">
                 <field
@@ -69,6 +71,12 @@
                     <option value="">MOD_QLCONTACT_PLEASE_CHOOSE</option>
                 </field>
                 <field
+                        name="category_display_title" type="radio" class="btn-group" default="0"
+                        label="MOD_QLCONTACT_DISPLAY_TITLE">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
                         name="category_display_contacts" type="radio" class="btn-group" default="0"
                         label="MOD_QLCONTACT_DISPLAY_CONTACTS">
                     <option value="1">JYES</option>
@@ -76,8 +84,14 @@
                 </field>
             </fieldset>
             <fieldset name="subcategories">
-                <field name="parentCategory" type="category" extension="com_contact" label="MOD_QLCONTACT_PARENTCATEGORY_LABEL" description="MOD_QLCONTACT_PARENTCATEGORY_DESC">
+                <field name="parent_category" type="category" extension="com_contact" label="MOD_QLCONTACT_PARENTCATEGORY_LABEL" description="MOD_QLCONTACT_PARENTCATEGORY_DESC">
                     <option value="">MOD_QLCONTACT_PLEASE_CHOOSE</option>
+                </field>
+                <field
+                        name="subcategories_display_title" type="radio" class="btn-group" default="0"
+                        label="MOD_QLCONTACT_DISPLAY_TITLE">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
                 <field
                         name="subcategories_display_contacts" type="radio" class="btn-group" default="0"

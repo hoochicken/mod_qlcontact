@@ -7,18 +7,20 @@
  * @license    GNU General Public License version 2 or later;
  * @var     $contact     ?Contact
  * @var     $parametersBasic     ParametersBasic
+ * @var     $parametersCustom    ParametersCustom
  * @var     $BASE_PATH   string
  */
 
 use Hoochicken\Module\Qlcontact\Site\Helper\ParametersBasic;
 use Hoochicken\Module\Qlcontact\Site\Helper\Contact;
+use Hoochicken\Module\Qlcontact\Site\Helper\ParametersCustom;
 
 defined('_JEXEC') or die;
 
 if (empty($contact)) return;
 ?>
 
-<div class="category-card">
+<div class="category-card <?= $parametersCustom->getCategoryItemClass('col-md-12') ?>">
     <h2><?= $contact->getName() ?> <?php if ($parametersBasic->isDebug()): ?>(<?= $contact->getId() ?>)<?php endif; ?></h2>
 
     <div class="position">

@@ -51,9 +51,19 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
         return (int)$this->params->get('single', 0);
     }
 
+    public function getContactItemClass(string $default = ''): int
+    {
+        return (int)$this->params->get('contact_item_class', $default);
+    }
+
+    public function getCategoryItemClass(string $default = ''): string
+    {
+        return (string)$this->params->get('category_item_class', $default);
+    }
+
     public function getParentCategory(): int
     {
-        return (int)$this->params->get('parentCategory', 0);
+        return (int)$this->params->get('parent_category', 0);
     }
 
     private function getDisplayType(): string
@@ -69,5 +79,15 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
     public function isCategoryAndDisplayContacts(): bool
     {
         return $this->isDisplayTypeCategory() && $this->params->get('category_display_contacts', false);
+    }
+
+    public function isSubcategoriesAndDisplayTitle(): bool
+    {
+        return $this->isDisplayTypeSubcategories() && $this->params->get('subcategories_display_title', false);
+    }
+
+    public function isCategoryAndDisplayTitle(): bool
+    {
+        return $this->isDisplayTypeCategory() && $this->params->get('category_display_title', false);
     }
 }
