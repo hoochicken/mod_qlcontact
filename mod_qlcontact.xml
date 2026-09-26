@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="6" client="site" method="upgrade">
-    <name>MOD_QLCONTACT</name>
+    <name>MOD_QLCONTACT_TITLE</name>
     <creationDate>Today</creationDate>
     <author>Hoochicken</author>
     <authorEmail>info@ql.de</authorEmail>
