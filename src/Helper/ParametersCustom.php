@@ -53,7 +53,7 @@ class ParametersCustom extends ParametersBasic implements ParametersBasicInterfa
 
     public function getContactItemClass(string $default = ''): int
     {
-        return (int)$this->params->get('contact_item_class', $default);
+        return (string)$this->params->get('contact_item_class', $default);
     }
 
     public function getCategoryItemClass(string $default = ''): string
