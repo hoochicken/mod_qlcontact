@@ -32,8 +32,8 @@
     </languages>
     <media destination="mod_qlcontact" folder="media">
         <filename>assets/joomla.asset.json</filename>
-        <filename>assets/css/mod_qlcontact.css</filename>
-        <filename>assets/js/mod_qlcontact.js</filename>
+        <filename>assets/css/styles.css</filename>
+        <filename>assets/js/script.js</filename>
     </media>
     <config>
         <fields name="params">
@@ -51,8 +51,8 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="contact_item_class" default="col-md-4" />
-                <field name="category_item_class" default="col-md-12" />
+                <field name="category_item_class" label="MOD_QLCONTACT_CATEGORY_ITEM_CLASS" default="col-md-12" />
+                <field name="contact_item_class" label="MOD_QLCONTACT_CONTACT_ITEM_CLASS" default="col-md-4" />
             </fieldset>
             <fieldset name="single">
                 <field
