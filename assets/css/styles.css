@@ -3,37 +3,13 @@
  * @copyright  Copyright (C) 2026. All rights reserved.
  * @license    GNU General Public License version 2 or later;
  */
-/* =========================
-   Contacts
-   ========================= */
-
-/* Letter/category groups: A, B, C */
-.qlcontact > .content > .categories {
+.qlcontact.category {
+    padding: 25px 0;
+}
+.qlcontact.category > .contacts {
     display: flex;
-    flex-direction: column;
     gap: 35px;
 }
-
-/* Hide empty descriptions */
-.qlcontact .description:empty {
-    display: none;
-}
-
-/* Contact cards container */
-.qlcontact .category > .contacts {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-/* =========================
-   Individual contact card
-   ========================= */
-
-.qlcontact .category > .contacts > .category {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 220px;
-    padding: 22px;
+.qlcontact.category > .contacts .contact-card {
+    padding:25px;
 }
